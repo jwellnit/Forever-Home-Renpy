@@ -24,9 +24,6 @@ label start:
         name = renpy.input("What is your name?", default = "ghost")
         name = name.strip()
 
-    # Placeholder bg.
-    scene bg room 
-
     "You stand in front of the house, a twisted mass of graying wood, leaning precariously to one side. No place has ever screamed 'haunted' quite as loudly – it almost feels a bit on the nose."
 
     "At least you don't have to worry about being injured when the 'absolutely-should-be-condemned' building finally collapses. Though, you suppose, when that does happen, you and your new roommates will have to find another place."
