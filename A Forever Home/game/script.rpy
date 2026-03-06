@@ -3,13 +3,13 @@
 define d = Character("Damien")
 define y = Character("[name]")
 
-# Variable declarations
-default damien_approval = 0
-default aggressive = 0
-
 # The game starts here.
 
 label start:
+
+    # Variable declarations
+    $ damien_approval = 0
+    $ aggressive = 0
 
     "Content Warning: This narrative includes explicit discussion of death and its various causes."
     
@@ -149,7 +149,7 @@ label intro_2:
 
     menu:
     
-        "\"Absolutely not.\" (Agressive)":
+        "\"Absolutely not.\" (Aggressive)":
             jump q1_aggressive
 
         "\"Wha- I mean... is that really necessary?\" (Nervous)":
@@ -293,6 +293,7 @@ label q1_murder:
 
     y "I can't... I dont remember all the details, but I know I was murdered."
 
+
     "Damien's eyes drop. He tries to muster up a smile, but it doesn't reach his eyes."
     
     d "I see." 
@@ -329,5 +330,327 @@ label q2:
     "Finally, he raises his head and looks towards you."
 
     d "When you lived, who was it you lived with?"
+
+    menu:
+        "Roommates.":
+            jump q2_roommates
+
+        "Friends.":
+            jump q2_friends
+
+        "Family.":
+            jump q2_family
+
+        "Alone.":
+            jump q2_alone
+
+label q2_roommates:
+
+    y "Oh, I lived in a pretty small place, split the rent with a couple of roommates."
+
+    "You pause, but Damien continues to stare expectantly at you. You clear your throat and continue."
+
+    y "I didn't know them very well, and they moved out a couple of weeks after I woke up, so..."
+
+    d "I understand" 
+    
+    "Damien holds up a hand, interrupting you. He pauses for a moment."
+    
+    d "How did you find it, your old living situation?"
+
+    menu:
+        "Annoying. (Aggressive)":
+            $ damien_approval -= 1
+            $ aggressive += 1
+            jump q2_roommates_aggressive
+
+        "Stressful. (Nervous)":
+            $ damien_approval -= 1
+            jump q2_roommates_nervous
+
+        "Alright. (Confident)":
+            jump q2_roommates_confident
+
+        "Fun. (Cheerful)":
+            $ damien_approval += 1
+            jump q2_roommates_cheerful
+
+label q2_roommates_aggressive:
+
+    y "Ah, in a word... irritating. They weren't great roommates, and none of us shared space with each other well."
+    
+    y "Didn't fight much, but it certainly happened. Glad not to be living there any more."
+
+    d "I see."
+    
+    "Damien looks at you blankly before flipping to a new page in his notebook."
+
+    jump q3
+
+label q2_roommates_nervous:
+
+    y "I... um, well it could be a bit much at times. I didn't really know them very well and we didn't always... communicate well."
+    
+    y "But there weren't any fights or anything! We just, you know, didn't talk very much."
+
+    d "I see."
+    
+    "Damien looks at you blankly before flipping to a new page in his notebook."
+
+    jump q3
+
+label q2_roommates_confident:
+
+    y "It was fine I suppose." 
+    
+    "You shrug."
+    
+    y "I didn't know my roommates particularly well but we were amiable, no major conflicts."
+
+    d "Good to hear." 
+    
+    "Damien nods and flips to the next page of his notebook."
+
+    jump q3
+
+label q2_roommates_cheerful:
+
+    y "It was nice! I didn't know them that well to start, but we got along well. I would live with them again if, y'know...."
+
+    d "I see; that's quite good to hear." 
+    
+    "A small smile spreads across Damien's face. He flips to the next page of his notebook."
+
+    jump q3
+
+label q2_friends:
+
+    y "Oh, I lived in a pretty small place, split the rent with a couple of friends."
+
+    "You pause, but Damien continues to stare expectantly at you. You clear your throat and continue."
+    
+    y "They moved out a couple of weeks after I woke up, I guess painful memories, so..."
+
+    d "I understand." 
+    
+    "Damien holds up a hand, interrupting you. He pauses for a moment."
+    
+    d "How did you find it, your old living situation?"
+
+    menu:
+        "Annoying. (Aggressive)":
+            $ damien_approval -= 1
+            $ aggressive += 1
+            jump q2_friends_aggressive
+
+        "Stressful. (Nervous)":
+            $ damien_approval -= 1
+            jump q2_friends_nervous
+
+        "Alright. (Confident)":
+            jump q2_friends_confident
+
+        "Fun. (Cheerful)":
+            $ damien_approval += 1
+            jump q2_friends_cheerful
+
+label q2_friends_aggressive:
+
+    y "Ah, in a word... irritating. Even though we were friends before, they weren't great roommates, and none of us shared space with each other well."
+    
+    y "Didn't fight much, but it certainly happened. Glad not to be living there any more."
+    
+    d "I see."
+    
+    "Damien looks at you blankly before flipping to a new page in his notebook."
+
+    jump q3
+
+label q2_friends_nervous:
+
+    y "I... um, well it could be a bit much at times. They were my friends and we got along well but I wasn't used to living with people, and we didn't... communicate well."
+    
+    y "But there weren't any fights or anything! We just, you know, didn't talk about roommate issues much."
+
+    d "I see."
+    
+    "Damien looks at you blankly before flipping to a new page in his notebook."
+
+    jump q3
+
+label q2_friends_confident:
+
+    y "It was fine I suppose." 
+    
+    "You shrug."
+    
+    y "We were friends, had our disagreements but no major conflicts. All in all I'd say we lived together well"
+
+    d "Good to hear." 
+    
+    "Damien nods and flips to the next page of his notebook."
+
+    jump q3
+
+label q2_friends_cheerful:
+
+    y "It was nice! I was a bit nervous about living with friends, worried it would spoil the friendships, but we got along well. I would live with them again if, y'know...."
+
+    d "I see; that's quite good to hear." 
+    
+    "A small smile spreads across Damien's face. He flips to the next page of his notebook."
+
+    jump q3
+
+label q2_family:
+
+    y "Oh, I lived with my family."
+
+    "You pause, but Damien continues to stare expectantly at you. You clear your throat and continue."
+    
+    y "It... it doesn't feel right, haunting them. I cant go back there."
+    
+    d "I understand." 
+    
+    "Damien holds up a hand, interrupting you. He pauses for a moment."
+    
+    d "How did you find it, your old living situation?"
+
+    menu:
+        "Annoying. (Aggressive)":
+            $ damien_approval -= 1
+            $ aggressive += 1
+            jump q2_family_aggressive
+
+        "Stressful. (Nervous)":
+            $ damien_approval += 1
+            jump q2_family_nervous
+
+        "Alright. (Confident)":
+            jump q2_family_confident
+
+        "Safe. (Cheerful)":
+            jump q2_family_cheerful
+
+label q2_family_aggressive:
+
+    y "Ah, in a word... irritating. I didn't get along with my family. I wish I had had a chance to go out on my own."
+    
+    d "I see."
+    
+    "Damien looks at you blankly before flipping to a new page in his notebook."
+
+    jump q3
+
+label q2_family_nervous:
+
+    y "I... um, well it could be a bit much at times. My family could be really overbearing and... well I prefer to have more space to myself. Emotionally I mean."
+
+    d "I see."
+    
+    "Damien looks at you blankly before flipping to a new page in his notebook."
+
+    jump q3
+
+label q2_family_confident:
+
+    y "It was fine I suppose." 
+    
+    "You shrug."
+    
+    y "They're family. Sometimes we fought, but we loved each other."
+
+    d "Good to hear." 
+    
+    "Damien nods and flips to the next page of his notebook."
+
+    jump q3
+
+label q2_family_cheerful:
+
+    y "It was... safe. You don't always get along with family but it was really comforting to have them close by. I hope I can find something like that again..."
+
+    d "Perhaps you will find that here."
+
+    "A small smile spreads across Damien's face. He flips to the next page of his notebook."
+
+    jump q3
+
+label q2_alone:
+
+    y "I lived alone."
+
+    "Damien's eyes drop and he nods. He levels his gaze back on you."
+
+    d "How did you find it, your old living situation?"
+
+    menu:
+        "Isolating. (Aggressive)":
+            $ damien_approval += 1
+            $ aggressive += 1
+            jump q2_alone_aggressive
+
+        "Lonely. (Nervous)":
+            $ damien_approval += 1
+            jump q2_alone_nervous
+
+        "Alright. (Confident)":
+            jump q2_alone_confident
+
+        "Peaceful. (Cheerful)":
+            jump q2_alone_cheerful
+            $ damien_approval -= 1
+
+label q2_alone_aggressive:
+
+    y "It was... I didn't live alone for lack of trying. And living disconnected from others can be sort of isolating."
+
+    d "Ah."
+    
+    "Damien offers you a sad smile."
+    
+    d "I can certainly understand that. Perhaps you'll find what you're looking for here."
+    
+    "He flips to a new page in his notebook."
+
+    jump q3
+
+label q2_alone_nervous:
+
+    y "It was... lonely. I missed having other people around."
+
+    d "Ah."
+    
+    "Damien offers you a sad smile."
+    
+    d "I can certainly understand that. Perhaps you'll find what you're looking for here."
+    
+    "He flips to a new page in his notebook."
+
+    jump q3
+
+label q2_alone_confident:
+
+    y "It was fine, I suppose. Lots of space to think."
+
+    d "I see."
+    
+    "Damien looks at you blankly before flipping to a new page in his notebook."
+
+    jump q3
+
+label q2_alone_cheerful:
+
+    y "It was peaceful. I like the quiet."
+
+    "Damien lets out a small chuckle."
+
+    d "You might be disappointed here then."
+
+    "He flips to a new page in his notebook."
+
+label q3:
+
+    if 
 
     return
