@@ -598,8 +598,8 @@ label q2_alone:
             jump q2_alone_confident
 
         "Peaceful. (Cheerful)":
-            jump q2_alone_cheerful
             $ damien_approval -= 1
+            jump q2_alone_cheerful
 
 label q2_alone_aggressive:
 
