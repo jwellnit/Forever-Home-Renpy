@@ -129,7 +129,7 @@ label intro_2:
 
     d "You won't fall. For some reason the only direction we can't phase is down."
     
-    "True to his word, you managed to take a seat, straightening your posture after recovering from the awkward endeavor of sitting in a chair you could not feel."
+    "True to his word, you managed to take a seat, straightening your posture after recovering from the awkward endeavor of sitting in a chair you can not feel."
     
     "You look at him expectantly. It's time for the interview to begin."
 
@@ -796,5 +796,108 @@ label q3_cheerful:
     jump endings
 
 label endings:
+
+    d "Well..." 
+    
+    "Damien straightens himself up in his chair."
+    
+    d "Do you have anything else you wish to say before we conclude the interview?"
+
+    menu:
+        "Wait for the verdict":
+
+            "You shake your head, and nervously await his decision."
+
+            if damien_approval < 2:
+
+                if aggressive >= 4:
+                    
+                    jump ending_4
+
+                else:
+
+                    jump ending_2
+
+            else:
+
+                jump ending_1
+
+        "Decide to leave the house":
+
+            y "Actually, I do have something to say."
+
+            jump ending_3
+
+label ending_1:
+
+    "If your heart could beat it would be pounding."
+    
+    "Damien stands, briefly phasing through the table before stepping to the side. Hands clasped in front of him, he announces his decision."
+
+    d "I am very pleased to welcome you to the house properly." 
+    
+    d "I'll introduce you to the others right now."
+
+    d "Welcome home."
+
+    return
+
+label ending_2:
+
+    "If your heart could beat it would be pounding."
+    
+    "Damien stands, briefly phasing through the table before stepping to the side. Hands clasped in front of him, he announces his decision."
+
+    d "I... truly am sorry." 
+    
+    "He looks away for a moment to collect his thoughts."
+    
+    d "You seem decent enough, but the state of the house is... precarious. I wish you all the best."
+
+    "You stand, wordlessly, and walk through the door into the night."
+
+    return
+
+label ending_3:
+
+    y "This place... if this interview was meant to evaluate me, then it gave me a good look into how you run things. I don't want to be a part of it."
+
+    d "Oh?" 
+    
+    "Damien looks genuinely surprised."
+
+    y "Yeah, keep your gated community or whatever. I don't need it."
+
+    "You stand, wordlessly, and walk through the door into the night."
+
+    return
+
+label ending_4:
+
+    "If your heart could beat it would be pounding."
+    
+    "Damien stands, briefly phasing through the table before stepping to the side. Hands clasped in front of him, he announces his decision."
+
+    d "I... truly am sorry." 
+    
+    "He looks away for a moment to collect his thoughts."
+    
+    d "You seem decent enough, but the state of the house is... precarious. I wish you all the best."
+
+    "You scoff. He said no. Shocker."
+
+    y "Yeah, I don't think so."
+
+    d "What?" 
+    
+    "Damien looks genuinely shocked."
+
+    y "I may be \"newly dead,\" but I am aware that ghosts can't actually touch each other. You can't make me leave."
+
+    d "I-"
+
+    y "I think I'll like it here..."
+
+    "And so you settle in, a ghost in the home of ghosts, haunting the haunted."
 
     return
