@@ -651,6 +651,150 @@ label q2_alone_cheerful:
 
 label q3:
 
-    if 
+    if damien_approval >= 2:
+
+        jump q3_approve
+    
+    d "Alright, just one more question."
+    
+    "Damien straightens up in his chair, his tone going more serious than before."
+    
+    d "Say you moved in. Say there was a crisis of some sort in the house. How would you handle it?"
+
+    menu:
+        "\"Figure out who's causing trouble and deal with them directly.\" (Aggressive)":
+            $ damien_approval -= 1
+            $ aggressive += 1
+            jump q3_aggressive
+        
+        "\"What kind of crisis?\" (Nervous)":
+            d "Any kind. I just want to know how you would respond in general."
+            jump q3_layer2
+
+        "\"Can you elaborate?\" (Confident)":
+            d "I could." 
+            "He paused."
+            d "But I won't. I suppose I want to know your strategy for dealing with stressful things more generally."
+            jump q3_layer2
+        
+        "\"Talk to everyone and figure out what I can do to help.\" (Cheerful)":
+            $ damien_approval += 1
+            jump q3_cheerful
+
+label q3_approve:
+    d "Alright, just one more question." 
+    
+    "Damien straightens up in his chair, his tone going more serious than before." 
+    
+    d "Say y-" 
+    
+    "He stops mid sentence, looking down at his notebook, furrowing his brow before closing the notebook and looking back towards you."
+
+    d "I wish to be frank with you. We have all died, and death is inherently traumatic. We all have demons we face, and the residents of this house are no different."
+    
+    d "But sometimes, needs clash. Sometimes what is helpful for one is harmful to another, and conflict arises. How would you deal with this conflict?"
+
+    menu:
+        "\"Figure out who's causing trouble and deal with them directly.\" (Aggressive)":
+            $ damien_approval -= 1
+            $ aggressive += 1
+            jump q3_aggressive
+        
+        "\"...I wouldn't.\" (Nervous)":
+            $ damien_approval -= 1
+            jump q3_nervous
+
+        "\"Try to calm down whoever is in crisis and go from there.\" (Confident)":
+            $ damien_approval += 1
+            jump q3_confident2
+        
+        "\"Sit with whoever is having a rough time and let them vent to me.\" (Cheerful)":
+            $ damien_approval += 1
+            jump q3_cheerful
+
+
+label q3_layer2:
+    menu:
+        "\"Figure out who's causing trouble and deal with them directly.\" (Aggressive)":
+            $ damien_approval -= 1
+            $ aggressive += 1
+            jump q3_aggressive
+        
+        "\"...I wouldn't.\" (Nervous)":
+            $ damien_approval -= 1
+            jump q3_nervous
+
+        "\"Without knowing the specific issue, I can't say for sure, but I'm good at keeping a level head.\" (Confident)":
+            $ damien_approval += 1
+            jump q3_confident
+        
+        "\"Talk to everyone and figure out what I can do to help.\" (Cheerful)":
+            $ damien_approval += 1
+            jump q3_cheerful
+
+
+label q3_aggressive:
+
+    d "What?"
+    
+    "Damien looks... concerned."
+
+    y "I just mean... well, we're dead, so this crisis obviously isn't a natural disaster or anything. It's interpersonal." 
+    
+    y "And if you're so concerned about making sure everyone here is a 'good fit,' then fine. Whoever is causing the problem can leave."
+
+    "Damien looks stunned. Several times he opens his mouth to speak, but closes it again, unsure what to say. Frustrated, you finally speak up."
+    
+    y "Look, this can't be an unexpected answer. That's basically what you're doing here. If you don't fit in, you're kicked to the curb."
+    
+    d "I... see."
+
+    jump endings
+
+label q3_nervous:
+
+    d "What?"
+    
+    "Damien looks... concerned."
+
+    y "I... I freeze up, when things are intense. In all honesty I probably wouldn't be much help."
+
+    d "I... see."
+    
+    "He clears his throat and rights himself before continuing."
+    
+    d "I appreciate your honesty."
+
+    jump endings
+
+label q3_confident:
+
+    d "Indeed."
+    
+    "Damien nods, seemingly impressed."
+
+    jump endings
+
+label q3_confident2:
+
+    y "I would need to know more about the specific issue at hand, but I'm good at keeping a level head."
+
+    d "Indeed."
+    
+    "Damien nods, seemingly impressed."
+
+    jump endings
+
+label q3_cheerful:
+
+    y "In my experience, just hearing people out and really listening helps the most."
+
+    d "Indeed."
+    
+    "Damien nods, seemingly impressed."
+
+    jump endings
+
+label endings:
 
     return
